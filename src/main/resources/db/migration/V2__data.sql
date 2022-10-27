@@ -13,7 +13,7 @@ create table articles (
 
 create table categories (
     id          bigserial primary key,
-    category    varchar(150) not null,
+    name        varchar(150) not null,
     created_at  timestamp default current_timestamp,
     updated_at  timestamp default current_timestamp
 );
