@@ -1,27 +1,3 @@
-create table users (
-    id         bigserial primary key,
-    username   varchar(36) not null,
-    password   varchar(80) not null,
-    email      varchar(50) unique,
-    created_at timestamp default current_timestamp,
-    updated_at timestamp default current_timestamp
-);
-
-create table roles (
-    id         bigserial primary key,
-    name       varchar(50) not null,
-    created_at timestamp default current_timestamp,
-    updated_at timestamp default current_timestamp
-);
-
-create table users_roles (
-    user_id    bigint not null references users (id),
-    role_id    bigint not null references roles (id),
-    created_at timestamp default current_timestamp,
-    updated_at timestamp default current_timestamp,
-    primary key (user_id, role_id)
-);
-
 create table statuses (
     id      bigserial primary key ,
     name    varchar(150) not null
@@ -48,10 +24,9 @@ create table articles_categories (
     primary key(article_id, category_id )
 );
 
-
-create table comments(
+create table comments (
      id         bigserial       primary key,
-     text       varchar(1000)   not null,
+     comment    varchar(1000)   not null,
      user_id    bigint          not null references users (id),
      article_id bigint          not null references articles (id)
      created_at timestamp default current_timestamp,
@@ -65,3 +40,31 @@ create table comments(
 --    created_at timestamp default current_timestamp,
 --    updated_at timestamp default current_timestamp
 --);
+
+
+
+
+insert into statuses(name)
+values ('created'),
+       ('moderating'),
+       ('published'),
+       ('hidden');
+
+insert into articles (title, content, user_id, status_id)
+values ('Заголовок статьи1', 'Тут должен быть контент статьи1', 1, 1),
+       ('Заголовок статьи2', 'Тут должен быть контент статьи2', 1, 1),
+       ('Заголовок статьи3', 'Тут должен быть контент статьи3', 2, 1);
+
+insert into categories(name)
+values ('Marketing'),
+       ('Design'),
+       ('Mobile dev'),
+       ('Web dev');
+
+insert into articles_categories (category_id, article_id)
+values (1, 1),
+       (2, 2),
+       (3, 2),
+       (4, 3);
+
+--comment, likes
