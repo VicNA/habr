@@ -20,8 +20,8 @@ public class Status {
     @Column(name = "name")
     private String name;
 
-    @OneToMany(mappedBy = "status")
-    private List<Article> articles;
+//    @OneToMany(mappedBy = "status")
+//    private List<Article> articles;
 
     @CreationTimestamp
     @Column(name = "created_at")

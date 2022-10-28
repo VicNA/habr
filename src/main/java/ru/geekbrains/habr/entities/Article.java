@@ -24,21 +24,22 @@ public class Article {
     @Column(name = "content")
     private String content;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;
+//    @ManyToOne
+//    @JoinColumn(name = "user_id")
+//    private User user;
 
-    @ManyToOne
-    @JoinColumn(name = "status_id")
-    private Status status;
+//    @ManyToOne
+//    @JoinColumn(name = "status_id")
+//    private Status status;
 
-    @OneToMany(mappedBy = "article")
-    private List<Comment> comments;
+//    @OneToMany(mappedBy = "article")
+//    private List<Comment> comments;
 
-    @ManyToMany
-    @JoinTable(name = "articles_categories",
-            joinColumns = @JoinColumn(name = "article_id"),
-            inverseJoinColumns = @JoinColumn(name = "category_id"))
+//    @ManyToMany
+//    @JoinTable(name = "articles_categories",
+//            joinColumns = @JoinColumn(name = "article_id"),
+//            inverseJoinColumns = @JoinColumn(name = "category_id"))
+    @ManyToMany(mappedBy = "articles")
     private Collection<Category> categories;
 
     @CreationTimestamp

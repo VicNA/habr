@@ -6,6 +6,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.Collection;
 
 @Entity
 @Table(name = "categories")
@@ -18,6 +19,13 @@ public class Category {
 
     @Column(name = "name")
     private String name;
+
+//    @ManyToMany(mappedBy = "categories")
+    @ManyToMany
+    @JoinTable(name = "articles_categories",
+            joinColumns = @JoinColumn(name = "category_id"),
+            inverseJoinColumns = @JoinColumn(name = "article_id"))
+    private Collection<Article> articles;
 
     @CreationTimestamp
     @Column(name = "created_at")

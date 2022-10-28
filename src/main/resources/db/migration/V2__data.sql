@@ -1,6 +1,8 @@
 create table statuses (
-    id      bigserial primary key ,
-    name    varchar(150) not null
+    id          bigserial primary key ,
+    name        varchar(150) not null,
+    created_at  timestamp default current_timestamp,
+    updated_at  timestamp default current_timestamp
 );
 
 create table articles (
@@ -8,7 +10,9 @@ create table articles (
     title       varchar(500) not null,
     content     text         not null,
     user_id     bigint       not null references users (id),
-    status_id   smallint     not null references statuses (id)
+    status_id   smallint     not null references statuses (id),
+    created_at  timestamp default current_timestamp,
+    updated_at  timestamp default current_timestamp
 );
 
 create table categories (
@@ -28,7 +32,7 @@ create table comments (
      id         bigserial       primary key,
      comment    varchar(1000)   not null,
      user_id    bigint          not null references users (id),
-     article_id bigint          not null references articles (id)
+     article_id bigint          not null references articles (id),
      created_at timestamp default current_timestamp,
      updated_at timestamp default current_timestamp
 );

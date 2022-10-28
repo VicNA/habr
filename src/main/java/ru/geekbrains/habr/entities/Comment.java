@@ -19,13 +19,13 @@ public class Comment {
     @Column(name = "comment")
     private String comment;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;
+//    @ManyToOne
+//    @JoinColumn(name = "user_id")
+//    private User user;
 
-    @ManyToOne
-    @JoinColumn(name = "article_id")
-    private Article article;
+//    @ManyToOne
+//    @JoinColumn(name = "article_id")
+//    private Article article;
 
     @CreationTimestamp
     @Column(name = "created_at")

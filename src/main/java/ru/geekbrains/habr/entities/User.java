@@ -27,13 +27,13 @@ public class User {
     @Column(name = "email")
     private String email;
 
-    @OneToMany(mappedBy = "user")
-    private List<Article> articles;
+//    @OneToMany(mappedBy = "user")
+//    private List<Article> articles;
+//
+//    @OneToMany(mappedBy = "user")
+//    private List<Comment> comments;
 
-    @OneToMany(mappedBy = "user")
-    private List<Comment> comments;
-
-    @ManyToMany
+    @ManyToMany()
     @JoinTable(name = "users_roles",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))

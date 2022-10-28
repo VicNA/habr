@@ -24,7 +24,7 @@ create table users_roles (
 
 insert into users (username, password, email)
 values ('bob', 'bob', 'bob_johnson@gmail.com'),
-       ('jack', 'jack', 'jack_johnson@gmail.com');
+       ('jack', 'jack', 'jack_johnson@gmail.com'),
        ('john', 'john', 'john_johnson@gmail.com');
 
 insert into roles (name)
