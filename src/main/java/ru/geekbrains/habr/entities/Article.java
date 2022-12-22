@@ -1,12 +1,12 @@
 package ru.geekbrains.habr.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.Collection;
 import java.util.List;
 
 @Entity
@@ -24,6 +24,9 @@ public class Article {
     @Column(name = "content")
     private String content;
 
+    @Column(name = "published_at")
+    private LocalDateTime publishedAt;
+
 //    @ManyToOne
 //    @JoinColumn(name = "user_id")
 //    private User user;
@@ -35,15 +38,12 @@ public class Article {
 //    @OneToMany(mappedBy = "article")
 //    private List<Comment> comments;
 
-//    @ManyToMany
-//    @JoinTable(name = "articles_categories",
-//            joinColumns = @JoinColumn(name = "article_id"),
-//            inverseJoinColumns = @JoinColumn(name = "category_id"))
     @ManyToMany(mappedBy = "articles")
-    private Collection<Category> categories;
+    private List<Category> categories;
 
     @CreationTimestamp
     @Column(name = "created_at")
+    @OrderBy("created_at DESC")
     private LocalDateTime createdAt;
 
     @UpdateTimestamp

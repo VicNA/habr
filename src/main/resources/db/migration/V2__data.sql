@@ -6,17 +6,18 @@ create table statuses (
 );
 
 create table articles (
-    id          bigserial    primary key,
-    title       varchar(500) not null,
-    content     text         not null,
-    user_id     bigint       not null references users (id),
-    status_id   smallint     not null references statuses (id),
-    created_at  timestamp default current_timestamp,
-    updated_at  timestamp default current_timestamp
+    id           bigserial    primary key,
+    title        varchar(500) not null,
+    content      text         not null,
+    user_id      bigint       not null references users (id),
+    status_id    smallint     not null references statuses (id),
+    published_at timestamp,
+    created_at   timestamp default current_timestamp,
+    updated_at   timestamp default current_timestamp
 );
 
 create table categories (
-    id          bigserial primary key,
+    id          serial primary key,
     name        varchar(150) not null,
     created_at  timestamp default current_timestamp,
     updated_at  timestamp default current_timestamp
@@ -54,10 +55,10 @@ values ('created'),
        ('published'),
        ('hidden');
 
-insert into articles (title, content, user_id, status_id)
-values ('Заголовок статьи1', 'Тут должен быть контент статьи1', 1, 1),
-       ('Заголовок статьи2', 'Тут должен быть контент статьи2', 1, 1),
-       ('Заголовок статьи3', 'Тут должен быть контент статьи3', 2, 1);
+insert into articles (title, content, user_id, status_id, published_at)
+values ('Заголовок статьи1', 'Тут должен быть контент статьи1', 1, 1, '2022-10-22'),
+       ('Заголовок статьи2', 'Тут должен быть контент статьи2', 1, 1, '2022-10-29'),
+       ('Заголовок статьи3', 'Тут должен быть контент статьи3', 2, 1, '2022-10-20');
 
 insert into categories(name)
 values ('Marketing'),
@@ -68,6 +69,7 @@ values ('Marketing'),
 insert into articles_categories (category_id, article_id)
 values (1, 1),
        (2, 2),
+       (2, 3),
        (3, 2),
        (4, 3);
 
