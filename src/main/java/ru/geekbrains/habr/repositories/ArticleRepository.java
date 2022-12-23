@@ -10,4 +10,5 @@ import ru.geekbrains.habr.entities.Article;
 @Repository
 public interface ArticleRepository extends JpaRepository<Article, Long> {
     Page<ArticleDto> findAllDtoedBy(Pageable pageable);
+    ArticleDto findDtoedById(Long id);
 }
